@@ -12,7 +12,8 @@
 sed -i 's/192.168.1.1/192.168.10.252/g' package/base-files/files/bin/config_generate
 
 # Default packages - the really basic set
-sed -i 's/block-mount/curl bind-dig htop/g' include/target.mk
+# kmod-fs-f2fs solve the issue that settings can not be saved
+sed -i 's/block-mount/curl bind-dig htop kmod-fs-f2fs/g' include/target.mk
 sed -i 's/luci-app-adbyby-plus luci-app-autoreboot/luci-ssl-openssl/g' include/target.mk
 sed -i 's/luci-app-filetransfer luci-app-vsftpd luci-app-ssr-plus luci-app-unblockmusic/luci-app-ssr-plus/g' include/target.mk
 sed -i 's/luci-app-arpbind luci-app-vlmcsd luci-app-wol luci-app-ramfree/luci-app-vlmcsd/g' include/target.mk
@@ -28,4 +29,8 @@ sed -i 's/kmod-sound-hda-core kmod-sound-hda-codec-realtek kmod-sound-hda-codec-
 sed -i 's/kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152//g' target/linux/x86/Makefile
 
 sed -i 's/kmod-e1000e kmod-e1000 kmod-r8169 kmod-igb kmod-bnx2/kmod-e1000e/g' target/linux/x86/64/target.mk
-sed -i 's/squashfs vdi vmdk pcmcia fpu/squashfs vdi vmdk pcmcia fpu vhd/g' target/linux/x86/Makefile
+sed -i 's/squashfs vdi vmdk pcmcia fpu/vhd/g' target/linux/x86/Makefile
+
+
+# vhd
+sed -i '273s/n/y/' config/Config-images.in
