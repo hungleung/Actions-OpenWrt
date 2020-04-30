@@ -29,8 +29,9 @@ sed -i 's/kmod-sound-hda-core kmod-sound-hda-codec-realtek kmod-sound-hda-codec-
 sed -i 's/kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152//g' target/linux/x86/Makefile
 
 sed -i 's/kmod-e1000e kmod-e1000 kmod-r8169 kmod-igb kmod-bnx2/kmod-e1000e/g' target/linux/x86/64/target.mk
-sed -i 's/squashfs vdi vmdk pcmcia fpu/squashfs vdi vmdk pcmcia fpu vhd/g' target/linux/x86/Makefile
+sed -i 's/squashfs vdi vmdk pcmcia fpu/ext4 squashfs vdi vmdk pcmcia fpu vhd/g' target/linux/x86/Makefile
 
 
 # vhd
 sed -i '273s/n/y/' config/Config-images.in
+sed -i '205s/n/y/' config/Config-images.in
