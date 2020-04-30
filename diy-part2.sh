@@ -9,7 +9,7 @@
 #============================================================
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.10.252/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.10.25/g' package/base-files/files/bin/config_generate
 
 # Default packages - the really basic set
 # kmod-fs-f2fs solve the issue that settings can not be saved
@@ -29,9 +29,13 @@ sed -i 's/kmod-sound-hda-core kmod-sound-hda-codec-realtek kmod-sound-hda-codec-
 sed -i 's/kmod-usb-net kmod-usb-net-asix kmod-usb-net-asix-ax88179 kmod-usb-net-rtl8150 kmod-usb-net-rtl8152//g' target/linux/x86/Makefile
 
 sed -i 's/kmod-e1000e kmod-e1000 kmod-r8169 kmod-igb kmod-bnx2/kmod-e1000e/g' target/linux/x86/64/target.mk
-sed -i 's/squashfs vdi vmdk pcmcia fpu/ext4 squashfs vdi vmdk pcmcia fpu vhd/g' target/linux/x86/Makefile
-
 
 # vhd
 sed -i '273s/n/y/' config/Config-images.in
+sed -i '272d' config/Config-images.in
+sed -i '265s/y/n/' config/Config-images.in
 sed -i '205s/n/y/' config/Config-images.in
+sed -i '82s/n/y/' config/Config-images.in
+
+# cancel shellsync
+sed -i '41s/+shellsync //' package/network/services/ppp/Makefile
