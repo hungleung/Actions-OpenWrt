@@ -78,11 +78,8 @@ jobs:
         ../$DIY_P2_SH
 
     - name: SSH connection to Actions
-      #uses: P3TERX/debugger-action@master
-      #if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
-      env:
-        TIMEOUT_MIN: 3
-      uses: tete1030/debugger-action@master
+      uses: P3TERX/debugger-action@master
+      if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     - name: Download package
       id: package
