@@ -14,8 +14,6 @@
 # Add a feed source
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 git clone https://github.com/hungleung/lede
-pwd
-ls -la
 cd ./lede
 git checkout esxi
 cd ..
