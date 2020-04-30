@@ -16,4 +16,7 @@
 git clone https://github.com/hungleung/lede
 pwd
 ls -la
+cd ./lede
+git checkout esxi
+cd ..
 cp -R ./lede/package/lean/luci-app-ssr-plus ../openwrt/package/lean/
