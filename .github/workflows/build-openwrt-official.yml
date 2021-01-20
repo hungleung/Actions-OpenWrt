@@ -18,11 +18,11 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: true
-#  schedule:
-#    - cron: 0 8 * * 5
+  schedule:
+    - cron: 30 8 * * *
 
 env:
-  REPO_URL: https://github.com/hungleung/lede
+  REPO_URL: https://github.com/hungleungi/openwrt
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
@@ -32,7 +32,7 @@ env:
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
   UPLOAD_WETRANSFER: false
-  UPLOAD_RELEASE: true
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -177,7 +177,7 @@ jobs:
         files: ${{ env.FIRMWARE }}/*
 
     - name: Delete workflow runs
-      uses: ActionsRML/delete-workflow-runs@main
+      uses: GitRML/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 3
