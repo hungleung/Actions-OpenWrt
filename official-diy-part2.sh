@@ -9,8 +9,8 @@
 # File name: diy-part2.sh
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
-git clone https://github.com/hungleungi/openwrt-passwall package/openwrt-passwall
-git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
+#git clone https://github.com/hungleungi/openwrt-passwall package/openwrt-passwall
+#git clone https://github.com/rufengsuixing/luci-app-adguardhome package/luci-app-adguardhome
 
 # Modify default IP
-sed -i 's/192.168.1.1/192.168.10.252/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.2/g' package/base-files/files/bin/config_generate
