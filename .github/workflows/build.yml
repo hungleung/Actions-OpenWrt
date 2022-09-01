@@ -17,15 +17,15 @@ on:
       ssh:
         description: 'SSH connection to Actions'
         required: false
-        default: false
+        default: true
   schedule:
     - cron: 30 8 * * *
 
 env:
-  REPO_URL: https://github.com/hungleungi/openwrt
-  REPO_BRANCH: master
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: n1.config
+  CONFIG_FILE: jdcloud.config
   DIY_P1_SH: official-diy-part1.sh
   DIY_P2_SH: official-diy-part2.sh
   UPLOAD_BIN_DIR: false
