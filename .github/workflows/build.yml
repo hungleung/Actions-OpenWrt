@@ -22,7 +22,7 @@ on:
     - cron: 30 8 * * *
 
 env:
-  REPO_URL: https://github.com/hungleung/immortalwrt
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
   REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
   CONFIG_FILE: .config
