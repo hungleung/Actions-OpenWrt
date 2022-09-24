@@ -27,12 +27,12 @@ sed -i 's/wpad-basic-wolfssl//' target/linux/ramips/mt7621/target.mk
 
 # load dts
 # echo '载入 mt7621_jdcloud_re-sp-01b.dts'
-curl --retry 3 -s --globoff "https://gist.githubusercontent.com/1-1-2/335dbc8e138f39fb8fe6243d424fe476/raw/[lean's%20lede]mt7621_jdcloud_re-sp-01b.dts" -o openwrt/target/linux/ramips/dts/mt7621_jdcloud_re-sp-01b.dts
+curl --retry 3 -s --globoff "https://gist.githubusercontent.com/1-1-2/335dbc8e138f39fb8fe6243d424fe476/raw/[lean's%20lede]mt7621_jdcloud_re-sp-01b.dts" -o target/linux/ramips/dts/mt7621_jdcloud_re-sp-01b.dts
 # ls -l target/linux/ramips/dts/mt7621_jdcloud_re-sp-01b.dts
 
 # fix2 + fix4.2
 # echo '修补 mt7621.mk'
-sed -i '/Device\/adslr_g7/i\define Device\/jdcloud_re-sp-01b\n  \$(Device\/dsa-migration)\n  \$(Device\/uimage-lzma-loader)\n  IMAGE_SIZE := 32448k\n  DEVICE_VENDOR := JDCloud\n  DEVICE_MODEL := RE-SP-01B\n  DEVICE_PACKAGES := lsblk block-mount kmod-fs-ext4 e2fsprogs fdisk kmod-sdhci-mt7620\nendef\nTARGET_DEVICES += jdcloud_re-sp-01b\n\n' openwrt/target/linux/ramips/image/mt7621.mk
+sed -i '/Device\/adslr_g7/i\define Device\/jdcloud_re-sp-01b\n  \$(Device\/dsa-migration)\n  \$(Device\/uimage-lzma-loader)\n  IMAGE_SIZE := 32448k\n  DEVICE_VENDOR := JDCloud\n  DEVICE_MODEL := RE-SP-01B\n  DEVICE_PACKAGES := lsblk block-mount kmod-fs-ext4 e2fsprogs fdisk kmod-sdhci-mt7620\nendef\nTARGET_DEVICES += jdcloud_re-sp-01b\n\n' target/linux/ramips/image/mt7621.mk
 
 # fix3 + fix5.2
 # echo '修补 02-network'
