@@ -8,31 +8,33 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build jdc_lean
+name: Build jdc_openwrt
 
 on:
   push:
     branches:
-      - 'jdcloud'
+      - 'jdc-openwrt'
   repository_dispatch:
   workflow_dispatch:
     inputs:
       ssh:
         description: 'SSH connection to Actions'
         required: false
-        default: false
-  schedule:
-    - cron: 30 21 * * *
+        default: true
+  # schedule:
+  #   - cron: 30 21 * * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
+  # REPO_URL: https://github.com/coolsnowwolf/lede
+  # REPO_BRANCH: master
   # REPO_URL: https://github.com/immortalwrt/immortalwrt
   # REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: openwrt-22.03
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
-  DIY_P1_SH: official-diy-part1.sh
-  DIY_P2_SH: jdc_lean.sh
+  CONFIG_FILE: jdc_openwrt.config
+  DIY_P1_SH: jdc_openwrt_1.sh
+  DIY_P2_SH: jdc_openwrt_2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false

@@ -15,4 +15,6 @@
 
 # Add a feed source
 sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
+sed -i '$a src-git kms https://github.com/mchome/luci-app-vlmcsd' feeds.conf.default
+
 # src-git helloworld https://github.com/fw876/helloworld
