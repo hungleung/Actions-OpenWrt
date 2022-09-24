@@ -11,6 +11,10 @@ for i in "dns2socks" "microsocks" "ipt2socks" "pdnsd-alt" "redsocks2"; do \
   svn checkout "https://github.com/immortalwrt/packages/trunk/net/$i" "package/helloworld/$i"; \
 done
 
+./scripts/feeds update packages
+rm -rf feeds/packages/lang/golang
+svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+
 #1. Modify default IP
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
 
@@ -49,4 +53,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 # echo '修补 system.sh 以正常读写 MAC'
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
-sed -i -e 's/dnsmasq/luci luci-app-ssr-plus luci-app-wireguard/' -e 's/odhcp6c/luci-app-vlmcsd/' -e 's/odhcpd-ipv6only/luci-app-upnp luci-app-udpxy/' include/target.mk
+sed -i -e 's/dnsmasq/luci luci-app-ssr-plus luci-app-wireguard luci-proto-ipv6 libip6tc kmod-ipt-nat6 luci-app-upnp luci-app-udpxy/' include/target.mk
