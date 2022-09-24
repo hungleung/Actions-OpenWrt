@@ -13,7 +13,7 @@ name: Build jdc_openwrt
 on:
   push:
     branches:
-      - 'jdc-openwrt'
+      - 'jdcloud-openwrt'
   repository_dispatch:
   workflow_dispatch:
     inputs:
