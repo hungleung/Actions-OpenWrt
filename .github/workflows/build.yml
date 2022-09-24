@@ -20,9 +20,9 @@ on:
       ssh:
         description: 'SSH connection to Actions'
         required: false
-        default: true
-  # schedule:
-  #   - cron: 30 21 * * *
+        default: false
+  schedule:
+    - cron: 30 6 * * *
 
 env:
   # REPO_URL: https://github.com/coolsnowwolf/lede
