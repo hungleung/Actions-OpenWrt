@@ -17,7 +17,13 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 # 修改主机名为 JDC_Mark1
 sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
+sed -i 's/\+libiwinfo//' feeds/luci/modules/luci-mod-dashboard/Makefile
+sed -i 's/\+libiwinfo-lua \+rpcd-mod-iwinfo//' feeds/luci/modules/luci-mod-battstatus/Makefile
+sed -i 's/\+libiwinfo-lua \+rpcd-mod-iwinfo//' feeds/luci/modules/luci-mod-network/Makefile
+sed -i 's/\+libiwinfo \+libiwinfo-lua//' feeds/luci/modules/luci-mod-status/Makefile
 sed -i 's/wpad-basic-wolfssl//' target/linux/ramips/mt7621/target.mk
+sed -i '104d' package/system/rpcd/Makefile
+sed -i 's/"title": "udpxy",/"title": "IPTV",/' feeds/luci/applications/luci-app-udpxy/root/usr/share/luci/menu.d/luci-app-udpxy.json
 
 #2. Clear the login password
 #sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-settings/files/zzz-default-settings
@@ -43,4 +49,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 # echo '修补 system.sh 以正常读写 MAC'
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
-sed -i -e 's/dnsmasq/luci-app-ssr-plus/' -e 's/odhcp6c/luci-app-vlmcsd/' -e 's/odhcpd-ipv6only/luci-app-upnp luci-app-udpxy/' include/target.mk
+sed -i -e 's/dnsmasq/luci luci-app-ssr-plus luci-app-wireguard/' -e 's/odhcp6c/luci-app-vlmcsd/' -e 's/odhcpd-ipv6only/luci-app-upnp luci-app-udpxy/' include/target.mk
