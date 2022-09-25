@@ -8,12 +8,12 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build jdc_lean
+name: Build-jdcloud-immortalwrt
 
 on:
   push:
     branches:
-      - 'jdcloud'
+      - 'jdcloud-immortalwrt'
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -25,14 +25,12 @@ on:
     - cron: 30 21 * * *
 
 env:
-  REPO_URL: https://github.com/coolsnowwolf/lede
-  REPO_BRANCH: master
-  # REPO_URL: https://github.com/immortalwrt/immortalwrt
-  # REPO_BRANCH: openwrt-21.02
+  REPO_URL: https://github.com/immortalwrt/immortalwrt
+  REPO_BRANCH: openwrt-21.02
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
-  DIY_P1_SH: official-diy-part1.sh
-  DIY_P2_SH: jdc_lean.sh
+  CONFIG_FILE: jdcloud-immortalwrt.config
+  DIY_P1_SH: jdcloud-immortalwrt-1.sh
+  DIY_P2_SH: jdcloud-immortalwrt-2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: false
@@ -42,7 +40,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Checkout
