@@ -1,16 +1,4 @@
-<<<<<<< Updated upstream:.github/workflows/build-jdcloud-lede.yml
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# Description: Build OpenWrt using GitHub Actions
-#
 
-=======
->>>>>>> Stashed changes:.github/workflows/jdcloud-lede.yml
 name: Build-jdcloud-lede
 
 on:
@@ -43,7 +31,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-18.04
 
     steps:
     - name: Checkout
