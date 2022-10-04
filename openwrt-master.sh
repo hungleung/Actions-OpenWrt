@@ -10,17 +10,17 @@
 sed -i 's/192.168.1.1/192.168.88.1/' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 #
-# sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
-# sed -i 's/\+libiwinfo//' feeds/luci/modules/luci-mod-dashboard/Makefile
-# sed -i 's/\+libiwinfo-lua//' feeds/luci/modules/luci-mod-battstatus/Makefile
-# sed -i 's/\+rpcd-mod-iwinfo//' feeds/luci/modules/luci-mod-battstatus/Makefile
-# sed -i 's/\+libiwinfo-lua//' feeds/luci/modules/luci-mod-network/Makefile
-# sed -i 's/\+rpcd-mod-iwinfo//' feeds/luci/modules/luci-mod-network/Makefile
-# sed -i 's/\+libiwinfo-lua//' feeds/luci/modules/luci-mod-status/Makefile
-# sed -i 's/\+libiwinfo//' feeds/luci/modules/luci-mod-status/Makefile
-# sed -i 's/wpad-basic-wolfssl//' target/linux/ramips/mt7621/target.mk
-# sed -i '104d' package/system/rpcd/Makefile
-# sed -i 's/"title": "udpxy",/"title": "IPTV",/' feeds/luci/applications/luci-app-udpxy/root/usr/share/luci/menu.d/luci-app-udpxy.json
+sed -i 's/\+libiwinfo-lua/+luci-base +luci +@LUCI_LANG_zh-cn/' feeds/luci/collections/luci/Makefile
+sed -i 's/\+libiwinfo//' feeds/luci/modules/luci-mod-dashboard/Makefile
+sed -i 's/\+libiwinfo-lua//' feeds/luci/modules/luci-mod-battstatus/Makefile
+sed -i 's/\+rpcd-mod-iwinfo//' feeds/luci/modules/luci-mod-battstatus/Makefile
+sed -i 's/\+libiwinfo-lua//' feeds/luci/modules/luci-mod-network/Makefile
+sed -i 's/\+rpcd-mod-iwinfo//' feeds/luci/modules/luci-mod-network/Makefile
+sed -i 's/\+libiwinfo-lua//' feeds/luci/modules/luci-mod-status/Makefile
+sed -i 's/\+libiwinfo//' feeds/luci/modules/luci-mod-status/Makefile
+sed -i 's/wpad-basic-wolfssl/nfs-utils kmod-fs-nfs kmod-fs-nfs-v4 kmod-fs-nfs-v3/' target/linux/ramips/mt7621/target.mk
+sed -i '104d' package/system/rpcd/Makefile
+sed -i 's/"title": "udpxy",/"title": "IPTV",/' feeds/luci/applications/luci-app-udpxy/root/usr/share/luci/menu.d/luci-app-udpxy.json
 
 # load dts
 # echo '载入 mt7621_jdcloud_re-sp-01b.dts'
