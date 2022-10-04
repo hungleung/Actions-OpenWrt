@@ -36,4 +36,4 @@ sed -i '/linksys,e5600|\\/i\        jdcloud,re-sp-01b)\n		local index="$(find_mt
 sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setup_macs/,/}/{/ampedwireless,ally-00x19k/i\        jdcloud,re-sp-01b)\n\t\tlan_mac=$(mtd_get_mac_ascii u-boot-env mac)\n\t\twan_mac=$(macaddr_add "$lan_mac" 1)\n\t\tlabel_mac=$lan_mac\n\t\t;;
 }' target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 
-sed -i -e 's/dnsmasq/luci luci-app-udpxy luci-app-qbittorrent luci-app-wireguard luci-app-cifs/' include/target.mk
+sed -i -e 's/dnsmasq/luci luci-app-udpxy luci-app-samba4 luci-app-minidlna  luci-app-transmission luci-app-wireguard/' include/target.mk
