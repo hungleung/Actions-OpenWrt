@@ -7,7 +7,7 @@
 #=================================================
 
 #1. Modify default IP
-sed -i 's/192.168.1.1/192.168.1.254/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.1/' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 #
 # sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
@@ -22,12 +22,6 @@ sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 # sed -i '104d' package/system/rpcd/Makefile
 # sed -i 's/"title": "udpxy",/"title": "IPTV",/' feeds/luci/applications/luci-app-udpxy/root/usr/share/luci/menu.d/luci-app-udpxy.json
 
-#2. Clear the login password
-#sed -i 's/$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.//g' openwrt/package/lean/default-settings/files/zzz-default-settings
-
-#3. Replace with JerryKuKu’s Argon
-#rm openwrt/package/lean/luci-theme-argon -rf
-
 # load dts
 # echo '载入 mt7621_jdcloud_re-sp-01b.dts'
 curl --retry 3 -s --globoff "https://gist.githubusercontent.com/1-1-2/335dbc8e138f39fb8fe6243d424fe476/raw/[lean's%20lede]mt7621_jdcloud_re-sp-01b.dts" -o target/linux/ramips/dts/mt7621_jdcloud_re-sp-01b.dts
@@ -41,9 +35,5 @@ sed -i '/linksys,e5600|\\/i\        jdcloud,re-sp-01b)\n		local index="$(find_mt
 # echo '修补 02-network'
 sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setup_macs/,/}/{/ampedwireless,ally-00x19k/i\        jdcloud,re-sp-01b)\n\t\tlan_mac=$(mtd_get_mac_ascii u-boot-env mac)\n\t\twan_mac=$(macaddr_add "$lan_mac" 1)\n\t\tlabel_mac=$lan_mac\n\t\t;;
 }' target/linux/ramips/mt7621/base-files/etc/board.d/02_network
-
-# fix5.1
-# echo '修补 system.sh 以正常读写 MAC'
-sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 sed -i -e 's/dnsmasq/luci luci-app-udpxy luci-app-qbittorrent luci-app-wireguard luci-app-cifs/' include/target.mk
