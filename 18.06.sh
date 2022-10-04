@@ -13,7 +13,6 @@ sed -i 's/ImmortalWrt/Home/g' package/base-files/files/bin/config_generate
 
 # disable wireless components
 sed -i 's/wpad-basic-openssl//' target/linux/ramips/mt7621/target.mk
-sed -ri '/^CMAKE_HOST_OPTIONS/r '<(echo -e '\t-DFEATURE_glib=OFF \\') feeds/packages/libs/qt6base/Makefile
 
 # disable multi pppoe
 # sed -i -e 's/\+libpthread//' package/network/services/ppp/Makefile
