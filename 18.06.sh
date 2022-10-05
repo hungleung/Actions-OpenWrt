@@ -20,7 +20,7 @@ sed -i 's/\+shellsync//' package/network/services/ppp/Makefile
 sed -i 's/\+kmod-mppe//' package/network/services/ppp/Makefile
 
 # change menu title
-sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/luci/applications/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/ssrp/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 
 # change default firmware size and package
 sed -i -e 's/kmod-mt7603 kmod-mt7615e/lsblk e2fsprogs fdisk/' -e 's/wpad-openssl//g' target/linux/ramips/image/mt7621.mk
