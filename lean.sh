@@ -21,4 +21,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/ddns-scripts_aliyun ddns-scripts_dnspod luci-app-ddns/luci-app-minidlna luci-app-cifsd luci-app-cifs-mount luci-app-transmission/' -e 's/luci-app-autoreboot //' -e 's/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/luci-app-serverchan luci-app-udpxy/' -e 's/luci-app-accesscontrol luci-app-nlbwmon //' -e 's/luci-app-wol/luci-app-wireguard odhcp6c htop/'  include/target.mk
+sed -i -e 's/ddns-scripts_aliyun ddns-scripts_dnspod luci-app-ddns/luci-app-minidlna luci-app-cifsd luci-app-cifs-mount luci-app-transmission/' -e 's/luci-app-autoreboot/nfs-utils kmod-fs-nfs kmod-fs-nfs-v4 kmod-fs-nfs-v3/' -e 's/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/luci-app-serverchan luci-app-udpxy/' -e 's/luci-app-accesscontrol luci-app-nlbwmon //' -e 's/luci-app-wol/luci-app-wireguard odhcp6c htop/'  include/target.mk
