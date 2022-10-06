@@ -12,7 +12,7 @@ sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_genera
 sed -i 's/ImmortalWrt/Home/g' package/base-files/files/bin/config_generate
 
 # disable wireless components
-sed -i 's/wpad-basic-openssl/nfs-utils kmod-fs-nfs kmod-fs-nfs-v4 kmod-fs-nfs-v3/' target/linux/ramips/mt7621/target.mk
+sed -i 's/wpad-basic-openssl//' target/linux/ramips/mt7621/target.mk
 
 # disable multi pppoe
 # sed -i -e 's/\+libpthread//' package/network/services/ppp/Makefile
