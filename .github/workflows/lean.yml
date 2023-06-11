@@ -70,10 +70,10 @@ jobs:
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         cd openwrt
         echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
-        echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
+        #echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
         echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
         echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
-        echo "src-git PW2 https://github.com/xiaorouji/openwrt-passwall2.git" >> feeds.conf.default
+        #echo "src-git PW2 https://github.com/xiaorouji/openwrt-passwall2.git" >> feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
