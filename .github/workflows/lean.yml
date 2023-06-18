@@ -11,9 +11,9 @@
 name: lean
 
 on:
-  push:
-    branches:
-      - 'JDC'
+  # push:
+  #   branches:
+  #     - 'JDC'
   repository_dispatch:
   workflow_dispatch:
     inputs:
