@@ -11,9 +11,9 @@
 name: cr8808
 
 on:
-  push:
-    branches:
-      - 'JDC'
+  # push:
+  #   branches:
+  #     - 'JDC'
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -39,7 +39,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     steps:
     - name: Checkout
