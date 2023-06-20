@@ -11,9 +11,9 @@
 name: lean-200915
 
 on:
-  push:
-    branches:
-      - 'JDC'
+#   push:
+#     branches:
+#       - 'JDC'
   repository_dispatch:
   workflow_dispatch:
     inputs:
@@ -22,7 +22,7 @@ on:
         required: false
         default: false
   schedule:
-    - cron: 0 4 * * 4
+#     - cron: 0 4 * * 4
 
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
