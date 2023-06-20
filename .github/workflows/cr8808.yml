@@ -11,16 +11,16 @@
 name: cr8808
 
 on:
-  # push:
-  #   branches:
-  #     - 'JDC'
+#   push:
+#     branches:
+#       - 'JDC'
   repository_dispatch:
   workflow_dispatch:
-    inputs:
-      ssh:
-        description: 'SSH connection to Actions'
-        required: false
-        default: false
+#     inputs:
+#       ssh:
+#         description: 'SSH connection to Actions'
+#         required: false
+#         default: false
   schedule:
     - cron: 0 4 * * 4
 
@@ -39,7 +39,7 @@ env:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
     - name: Checkout
@@ -49,12 +49,9 @@ jobs:
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
-        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc
-        #sudo -E add-apt-repository ppa:npalix/coccinelle
+        sudo -E add-apt-repository ppa:npalix/coccinelle
         sudo -E apt-get -qq update
         sudo -E apt-get install -y build-essential clang flex g++ gawk gcc-multilib gettext git libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev coccinelle
-        sudo -E apt-get -qq autoremove --purge
-        sudo -E apt-get -qq clean
         sudo timedatectl set-timezone "$TZ"
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
@@ -70,8 +67,8 @@ jobs:
         cd openwrt
         # echo "src-git helloworld https://github.com/fw876/helloworld.git" >> ./feeds.conf.default
         #echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
-        # echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
-        # echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
+        echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
+        echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
         #echo "src-git PW2 https://github.com/xiaorouji/openwrt-passwall2.git" >> feeds.conf.default
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
@@ -86,12 +83,12 @@ jobs:
         chmod +x $DIY_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_SH
-    - name: SSH connection to Actions
-      uses: P3TERX/ssh2actions@v1.0.0
-      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      env:
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+#     - name: SSH connection to Actions
+#       uses: P3TERX/ssh2actions@v1.0.0
+#       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+#       env:
+#         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+#         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
 
     - name: Download package
       id: package
