@@ -21,7 +21,7 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: false
-  schedule:
+  #schedule:
     - cron: 30 6 * * *
 
 env:
