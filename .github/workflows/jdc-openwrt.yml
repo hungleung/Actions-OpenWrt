@@ -74,8 +74,9 @@ jobs:
         # echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
         # echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
         # echo "src-git PW2 https://github.com/xiaorouji/openwrt-passwall2.git" >> feeds.conf.default
-        echo "src-git openwrt-v2ray https://github.com/kuoruan/openwrt-v2ray.git" >> feeds.conf.default
-        echo "src-git luci-app-v2ray https://github.com/kuoruan/luci-app-v2ray.git" >> feeds.conf.default
+        echo "src-git openwrtv2ray https://github.com/kuoruan/openwrt-v2ray.git" >> feeds.conf.default
+        echo "src-git luciappv2ray https://github.com/kuoruan/luci-app-v2ray.git" >> feeds.conf.default
+        cat feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
