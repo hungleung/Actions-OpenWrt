@@ -26,4 +26,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/dnsmasq/dnsmasq-full luci-app-udpxy luci-app-acme luci-app-upnp luci-app-shadowsocks-libev luci-app-ddns luci-proto-wireguard luci-app-samba4 acmesh-dnsapi luci-ssl-openssl ddns-scripts_cloudflare.com-v4 curl nano/'  include/target.mk
+sed -i -e 's/dnsmasq/dnsmasq-full luci-app-udpxy luci-app-acme luci-app-upnp luci-app-shadowsocks-libev luci-app-ddns luci-proto-wireguard luci-app-samba4 acme-acmesh-dnsapi luci-ssl-openssl ddns-scripts_cloudflare.com-v4 curl nano/'  include/target.mk
