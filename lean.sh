@@ -30,4 +30,4 @@ sed -i -e '59s/ddns-scripts_aliyun ddns-scripts_dnspod/ddns-scripts_cloudflare.c
 # Add nfs/emmc/upgrade
 sed -i -e '60s/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/nfs-utils kmod-fs-nfs kmod-fs-nfs-v4 kmod-fs-nfs-v3 nfs-kernel-server kmod-loop/' include/target.mk
 # remove packages not needed
-sed -i -e '61s/luci-app-nlbwmon/luci-app-nfs luci-app-serverchan/' include/target.mk
+sed -i -e '61s/luci-app-nlbwmon/luci-app-nfs/' include/target.mk
