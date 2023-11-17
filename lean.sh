@@ -25,5 +25,9 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
     }' target/linux/ramips/mt7621/base-files/etc/board.d/02_network
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
-# change default package
-sed -i -e 's/ddns-scripts_aliyun ddns-scripts_dnspod luci-app-ddns//' -e 's/luci-app-autoreboot//' -e 's/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/luci-app-udpxy luci-app-passwall luci-app-ssr-plus /' -e 's/luci-app-accesscontrol luci-app-nlbwmon //' -e 's/luci-app-wol/luci-app-wireguard/'  include/target.mk
+# Add package needed
+sed -i -e '59s/ddns-scripts_aliyun ddns-scripts_dnspod/ddns-scripts_cloudflare.com-v4 luci-ssl-openssl luci-app-udpxy luci-app-acme acme-dnsapi acme-deploy acme-notify luci-proto-wireguard luci-app-wireguard luci-app-samba4 nano htop curl/'  include/target.mk
+# Add nfs/emmc/upgrade
+sed -i -e '60s/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/nfs-utils kmod-fs-nfs kmod-fs-nfs-v4 kmod-fs-nfs-v3 nfs-kernel-server kmod-loop/' include/target.mk
+# remove packages not needed
+sed -i -e '61s/luci-app-nlbwmon/luci-app-nfs luci-app-serverchan/' include/target.mk
