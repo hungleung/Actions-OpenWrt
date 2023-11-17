@@ -9,15 +9,15 @@
 # change default lan address and hostname
 # verified to be working
 sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
-sed -i 's/ImmortalWrt/Home/g' package/base-files/files/bin/config_generate
+sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 sed -i 's/\+shellsync//' package/network/services/ppp/Makefile
 sed -i 's/\+kmod-mppe//' package/network/services/ppp/Makefile
 sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
 
 # disable and remove wireless
-sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
-sed -i 's/iwinfo//' feeds/luci/modules/luci-mod-admin-full/Makefile
-sed -i 's/wpad-openssl//' target/linux/ramips/mt7621/target.mk
+# sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
+# sed -i 's/iwinfo//' feeds/luci/modules/luci-mod-admin-full/Makefile
+# sed -i 's/wpad-openssl//' target/linux/ramips/mt7621/target.mk
 
 curl --retry 3 -s --globoff "https://gist.githubusercontent.com/1-1-2/335dbc8e138f39fb8fe6243d424fe476/raw/328209ec5bf504b39133ce4dcec918baf466970c/mt7621_jdcloud_re-sp-01b.dts" -o target/linux/ramips/dts/mt7621_jdcloud_re-sp-01b.dts
 sed -i '/Device\/adslr_g7/i\define Device\/jdcloud_re-sp-01b\n  \$(Device\/dsa-migration)\n  \$(Device\/uimage-lzma-loader)\n  IMAGE_SIZE := 32448k\n  DEVICE_VENDOR := JDCloud\n  DEVICE_MODEL := RE-SP-01B\n  DEVICE_PACKAGES := lsblk block-mount e2fsprogs fdisk kmod-fs-ext4 kmod-sdhci-mt7620 kmod-usb3\nendef\nTARGET_DEVICES += jdcloud_re-sp-01b\n\n' target/linux/ramips/image/mt7621.mk
@@ -26,4 +26,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/ddns-scripts_aliyun ddns-scripts_dnspod luci-app-ddns//' -e 's/luci-app-autoreboot//' -e 's/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/luci-app-udpxy luci-app-passwall luci-app-ssr-plus /' -e 's/luci-app-accesscontrol luci-app-nlbwmon //' -e 's/luci-app-wol/luci-app-wireguard/'  include/target.mk
+sed -i -e 's/ddns-scripts_aliyun ddns-scripts_dnspod luci-app-ddns//' -e 's/luci-app-autoreboot//' -e 's/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/luci-app-udpxy luci-app-ssr-plus /' -e 's/luci-app-accesscontrol luci-app-nlbwmon //' -e 's/luci-app-wol/luci-app-wireguard/'  include/target.mk
