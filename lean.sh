@@ -28,6 +28,6 @@ sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/function
 # Add package needed
 sed -i -e '59s/ddns-scripts_aliyun ddns-scripts_dnspod/ddns-scripts_cloudflare.com-v4 luci-ssl-openssl luci-app-udpxy luci-app-acme acme-dnsapi acme-deploy acme-notify luci-proto-wireguard luci-app-wireguard luci-app-samba4 nano htop curl/'  include/target.mk
 # Add nfs/emmc/upgrade
-sed -i -e '60s/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd/nfs-utils kmod-fs-nfs kmod-fs-nfs-v4 kmod-fs-nfs-v3 nfs-kernel-server kmod-loop/' include/target.mk
+sed -i -e '60s/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd//' include/target.mk
 # remove packages not needed
-sed -i -e '61s/luci-app-nlbwmon/luci-app-nfs/' include/target.mk
+sed -i -e '61s/luci-app-nlbwmon//' include/target.mk
