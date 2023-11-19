@@ -8,11 +8,34 @@
 
 # change default lan address and hostname
 # verified to be working
-sed -i 's/192.168.1.1/192.168.88.1/g' package/base-files/files/bin/config_generate
+sed -i 's/192.168.1.1/192.168.88.2/g' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
 sed -i 's/\+shellsync//' package/network/services/ppp/Makefile
 sed -i 's/\+kmod-mppe//' package/network/services/ppp/Makefile
+# sed -i '281s/y/n/'  config/Config-images.in
+# sed -i '293s/y/n/'  config/Config-images.in
+# sed -i '70s/y/n/'  config/Config-images.in
+# sed -i '80s/y/n/'  config/Config-images.in
+sed -i '27s/y/n/'  feeds/luci/applications/luci-app-rclone/Makefile
+sed -i '31s/y/n/'  feeds/luci/applications/luci-app-rclone/Makefile
+sed -i '29s/y/n/'  feeds/luci/applications/luci-app-unblockmusic/Makefile
+sed -i 's/Dynamic DNS/DDNS/g'  feeds/luci/applications/luci-app-ddns/luasrc/controller/ddns.lua
+sed -i 's/KMS Server/KMS/' feeds/luci/applications/luci-app-vlmcsd/luasrc/controller/vlmcsd.lua
+sed -i 's/ACME certs/ACME/' feeds/luci/applications/luci-app-acme/luasrc/controller/acme.lua
+sed -i 's/_("udpxy")/_("IPTV")/' feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua 
+sed -i 's/default y/default n/g'  feeds/luci/applications/luci-app-turboacc/Makefile
+sed -i '12,15d' feeds/luci/applications/luci-app-acme/po/zh-cn/acme.po
+sed -i '1,3d' feeds/luci/applications/luci-app-vlmcsd/po/zh-cn/vlmcsd.po
+sed -i '66s/^default.*//'  feeds/helloworld/luci-app-ssr-plus/Makefile
+sed -i '83s/^default.*//'  feeds/helloworld/luci-app-ssr-plus/Makefile
+sed -i '149s/"y"/n"/'  feeds/helloworld/luci-app-ssr-plus/Makefile
+sed -i '157s/"y"/n"/'  feeds/helloworld/luci-app-ssr-plus/Makefile
+sed -i '161s/"y"/n` "/'  feeds/helloworld/luci-app-ssr-plus/Makefile
 sed -i 's/"ShadowSocksR Plus+"/"SSRP+"/'  feeds/helloworld/luci-app-ssr-plus/luasrc/controller/shadowsocksr.lua
+sed -i '18,29d' package/lean/default-settings/files/zzz-default-settings
+sed -i 's/nas/services/g' feeds/luci/applications/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
+sed -i 's/nas/services/g' feeds/luci/applications/luci-app-nfs/luasrc/controller/nfs.lua
+sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/luasrc/controller/samba4.lua
 
 # disable and remove wireless
 # sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
