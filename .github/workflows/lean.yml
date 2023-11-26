@@ -12,8 +12,6 @@ name: Build OpenWrt with OpenClash
 
 on:
   push:
-    branches:
-      - 'jdc-openclash'
   repository_dispatch:
   workflow_dispatch:
     inputs:
