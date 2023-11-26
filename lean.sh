@@ -49,8 +49,8 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # Add package needed
-sed -i -e '59s/ddns-scripts_aliyun ddns-scripts_dnspod/ddns-scripts_cloudflare.com-v4 luci-ssl-openssl luci-app-udpxy luci-app-acme acme-dnsapi acme-deploy acme-notify luci-proto-wireguard luci-app-wireguard luci-app-samba4 nano htop curl/'  include/target.mk
+sed -i -e '59s/ddns-scripts_aliyun ddns-scripts_dnspod/ddns-scripts_cloudflare.com-v4 luci-ssl-openssl luci-app-udpxy luci-app-acme acme-dnsapi acme-deploy acme-notify luci-proto-wireguard luci-app-wireguard luci-app-samba4 nano htop curl wget/'  include/target.mk
 # Add nfs/emmc/upgrade
-sed -i -e '60s/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd//' include/target.mk
+sed -i -e '60s/luci-app-arpbind luci-app-filetransfer luci-app-vsftpd luci-app-ssr-plus/luci-app-openclash/' include/target.mk
 # remove packages not needed
-sed -i -e '61s/luci-app-nlbwmon//' include/target.mk
+sed -i -e '61s/luci-app-accesscontrol luci-app-nlbwmon//' include/target.mk
