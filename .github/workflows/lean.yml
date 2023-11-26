@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: Build OpenWrt for JDC with OpenClash
+name: lean
 
 on:
   # push:
@@ -21,46 +21,20 @@ on:
         description: 'SSH connection to Actions'
         required: false
         default: false
-        type: choice
-        options:
-          - false
-          - true
-      source_branch:
-        description: "Select the source branch"
-        required: false
-        default: "lede-master"
-        type: choice
-        options:
-          - openwrt-main
-          - lede-master
-          - immortalwrt-master
-  # schedule:
-  #   - cron: 0 4 * * 4
+  schedule:
+    - cron: 0 4 * * 4
 
 env:
-  # Set up compilation source code
-  if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
-      REPO_URL="https://github.com/openwrt/openwrt"
-      REPO_BRANCH="main"
-      TAGS_NAME="openwrt"
-  elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
-      REPO_URL="https://github.com/coolsnowwolf/lede"
-      REPO_BRANCH="master"
-      TAGS_NAME="lean"
-  elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
-      REPO_URL="https://github.com/immortalwrt/immortalwrt"
-      REPO_BRANCH="master"
-      TAGS_NAME="immortal"
-  else
-      echo "Unknown source code repository."
-      exit 1
-  fi
+  REPO_URL: https://github.com/coolsnowwolf/lede
+  REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: ${TAGS_NAME}.config
-  DIY_SH: ${TAGS_NAME}.sh
+  CONFIG_FILE: lean.config
+  DIY_SH: lean.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_RELEASE:  true
+  UPLOAD_COWTRANSFER: false
+  UPLOAD_WETRANSFER: false
+  UPLOAD_RELEASE: false
   TZ: Asia/Shanghai
 
 jobs:
@@ -95,8 +69,11 @@ jobs:
       run: |
         [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
         cd openwrt
-        # echo "src-git helloworld https://github.com/fw876/helloworld.git;main" >> ./feeds.conf.default
-        echo "src-git openclash https://github.com/vernesong/OpenClash.git;master" >> ./feeds.conf.default
+        echo "src-git helloworld https://github.com/fw876/helloworld.git;main" >> ./feeds.conf.default
+        #echo "src-git openclash https://github.com/vernesong/OpenClash.git" >> ./feeds.conf.default
+        #echo "src-git PWpackages https://github.com/xiaorouji/openwrt-passwall.git;packages" >> feeds.conf.default
+        #echo "src-git PWluci https://github.com/xiaorouji/openwrt-passwall.git;luci" >> feeds.conf.default
+        #echo "src-git PW2 https://github.com/xiaorouji/openwrt-passwall2.git" >> feeds.conf.default
 
     - name: Update feeds
       run: cd openwrt && ./scripts/feeds update -a
