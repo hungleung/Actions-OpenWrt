@@ -5,6 +5,7 @@
 # ./scripts/feeds update packages
 # rm -rf feeds/packages/lang/golang
 # svn co https://github.com/openwrt/packages/branches/openwrt-22.03/lang/golang feeds/packages/lang/golang
+svn co https://github.com/vernesong/OpenClash/trunk/luci-app-openclash package/luci-app-openclash
 
 # change default lan address and hostname
 # verified to be working
