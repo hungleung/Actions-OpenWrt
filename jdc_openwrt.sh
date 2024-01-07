@@ -11,10 +11,11 @@
 # verified to be working
 sed -i 's/192.168.1.1/192.168.88.3/g' package/base-files/files/bin/config_generate
 sed -i 's/OpenWrt/Home/g' package/base-files/files/bin/config_generate
-sed -i 's/Dynamic DNS/DDNS/g'  feeds/luci/applications/luci-app-ddns/luasrc/controller/ddns.lua
-sed -i 's/ACME certs/ACME/' feeds/luci/applications/luci-app-acme/luasrc/controller/acme.lua
-sed -i 's/_("udpxy")/_("IPTV")/' feeds/luci/applications/luci-app-udpxy/luasrc/controller/udpxy.lua
-sed -i 's/nas/services/g' feeds/luci/applications/luci-app-samba4/luasrc/controller/samba4.lua
+sed -i '208s/ DNS(DDNS)/域名/'  feeds/luci/applications/luci-app-ddns/po/zh_Hans/ddns.po
+sed -i '16s/ACME /配置/' feeds/luci/applications/luci-app-acme/po/zh_Hans/acme.po
+sed -i '76s/udpxy/直播电视/' feeds/luci/applications/luci-app-udpxy/po/zh_Hans/udpxy.po
+sed -i '199s/UPnP/端口转发/' feeds/luci/applications/luci-app-upnp/po/zh_Hans/upnp.po
+sed -i '688s/SmartDNS/端口转发/' feeds/luci/applications/luci-app-smartdns/po/zh_Hans/smartdns.po
 
 # disable and remove wireless
 sed -i 's/\+libiwinfo-lua//' feeds/luci/collections/luci/Makefile
@@ -29,4 +30,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/dnsmasq/dnsmasq-full luci-app-ddns ddns-scripts_cloudflare.com-v4 luci-ssl-openssl luci-app-udpxy luci-app-acme acme-dnsapi acme-deploy acme-notify luci-proto-wireguard luci-app-wireguard luci-app-samba4 nano htop curl wget/'  include/target.mk
+sed -i -e 's/dnsmasq/dnsmasq-full adguardhome luci-app-ddns luci-app-smartdns luci-app-upnp ddns-scripts_cloudflare.com-v4 luci-ssl-openssl luci-app-udpxy luci-app-acme acme-dnsapi acme-deploy acme-notify luci-proto-wireguard luci-app-wireguard luci-app-samba4 nano htop curl wget/'  include/target.mk
