@@ -29,4 +29,4 @@ sed -i -e '/lenovo,newifi-d1|\\/i\        jdcloud,re-sp-01b|\\' -e '/ramips_setu
 sed -i 's#key"'\''=//p'\''#& \| head -n1#' package/base-files/files/lib/functions/system.sh
 
 # change default package
-sed -i -e 's/dnsmasq/dnsmasq luci-app-upnp luci luci-app-udpxy luci-app-samba4 nano htop curl wget/'  include/target.mk
+sed -i -e 's/dnsmasq/dnsmasq adguardhome luci-app-upnp luci luci-app-udpxy luci-app-samba4 nano htop curl wget/'  include/target.mk
