@@ -13,15 +13,6 @@ on:
     branches:
       - hyper-v
   workflow_dispatch:
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-dotnet@v3
-      - run: dotnet --version
-      - run: dotnet build
 #  schedule:
 #    - cron: 0 8 * * 5
 #  watch:
@@ -34,7 +25,6 @@ env:
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
-  SSH_ACTIONS: false
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_COWTRANSFER: true
@@ -86,10 +76,6 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         ../$DIY_P2_SH
-
-    # - name: SSH connection to Actions
-    #   uses: P3TERX/debugger-action@master
-    #   if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
 
     - name: Download package
       id: package
