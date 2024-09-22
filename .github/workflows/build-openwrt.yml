@@ -51,18 +51,26 @@ jobs:
       - name: Checkout OpenWrt
         uses: actions/checkout@v3
 
-      - name: Update feeds
-        run: |
-          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
-          ./scripts/feeds update -a
-          ./scripts/feeds install -a
-
       - name: Clone source code
         id: codes
         working-directory: /workdir
         run: |
           git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
           ln -sf /workdir/openwrt ${GITHUB_WORKSPACE}/openwrt
+  
+      - name: Load custom feeds
+        run: |
+          [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+          sed -i 's/#src-git helloworld/src-git helloworld/g' ./feeds.conf.default
+          chmod +x $DIY_P1_SH
+          cd openwrt/
+          ${GITHUB_WORKSPACE}/${DIY_P1_SH}
+  
+      - name: Update feeds
+        run: cd openwrt && ./scripts/feeds update -a
+  
+      - name: Install feeds
+        run: cd openwrt && ./scripts/feeds install -a
   
       - name: Load custom configuration
         run: |
